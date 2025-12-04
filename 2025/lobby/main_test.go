@@ -27,3 +27,22 @@ func TestFindMaxJoltage(t *testing.T) {
 		}
 	}
 }
+
+func TestCalculateStaticFriction(t *testing.T) {
+	tests := []struct {
+		input    string
+		expected int64
+	}{
+		{"987654321111111", 987654321111},
+		{"811111111111119", 811111111119},
+		{"234234234234278", 434234234278},
+		{"818181911112111", 888911112111},
+	}
+
+	for _, tc := range tests {
+		got := calculateStaticFriction(tc.input)
+		if got != tc.expected {
+			t.Errorf("CalculateStaticFriction(%q) = %d; want %d", tc.input, got, tc.expected)
+		}
+	}
+}
